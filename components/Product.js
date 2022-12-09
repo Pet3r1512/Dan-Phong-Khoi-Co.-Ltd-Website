@@ -1,4 +1,4 @@
-import react, { useState } from 'react'
+import { useState } from 'react'
 
 import ProductModal from "./modal/ProductModal"
 import ProductItem from "./product/ProductItem"
