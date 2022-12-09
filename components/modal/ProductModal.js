@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { formattedPrice } from "../../functions/handlers"
 import Close from "../icons/close"
 import Button from "../product/Button"
@@ -48,7 +49,7 @@ export default function ProductModal({product, showModal, setShowModal}) {
                     <button className="absolute top-2 right-2" onClick={() => {setShowModal(false)}}>
                         <Close />
                     </button>
-                    <img src={product.img} alt="" className="w-[250px] h-[250px] object-cover rounded-2xl" />
+                    <Image src={product.img} alt="" className="w-[250px] h-[250px] object-cover rounded-2xl" />
                     <div className="flex flex-col">
                         {modalDetails}
                     </div>

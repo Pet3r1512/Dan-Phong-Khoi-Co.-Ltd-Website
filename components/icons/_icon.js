@@ -1,3 +1,3 @@
-export { default as Cart } from "./cart"
-export { default as Info } from "./info"
-export { default as Close } from "./close"
+export { default as Cart } from "./Cart"
+export { default as Info } from "./Info"
+export { default as Close } from "./Close"

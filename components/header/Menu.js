@@ -22,7 +22,7 @@ const navigationLinkInfo = [
     {
         id: 2,
         name: "Cart",
-        link: "/cart",
+        link: "",
     }
 ]
 
