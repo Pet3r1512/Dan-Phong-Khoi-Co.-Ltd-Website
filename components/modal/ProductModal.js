@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { formattedPrice } from "../../functions/handlers"
-import Close from "../icons/close"
+import { Close } from "../icons/_icon"
 import Button from "../product/Button"
 
 export default function ProductModal({product, showModal, setShowModal}) {
