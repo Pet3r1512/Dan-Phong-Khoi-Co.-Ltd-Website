@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import ProductModal from "./modal/ProductModal"
 import ProductItem from "./product/ProductItem"
@@ -6,6 +6,17 @@ import ProductItem from "./product/ProductItem"
 export default function Product() {
     const [showModal, setShowModal] = useState(false)
     const [clickedProduct, setClickedProduct] = useState({})
+
+    // GET DATA FROM MSSQL-------------------------------------------------------------
+    // useEffect(() => {
+    //     async function getData() {
+    //         const apiUrlEndPoint = `https://localhost:3000/assets/db/db`
+    //         const response = await fetch(apiUrlEndPoint)
+    //         const res = await response.json()
+    //         console.log(res)
+    //     }
+    //     getData()
+    // }, [])
 
     const Products = demoProducts.map((item, index) => {
         return (
