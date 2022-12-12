@@ -3,7 +3,23 @@ import Button from "./Button"
 
 import { formattedPrice } from "../../functions/handlers"
 
-export default function ProductItem({product, setShowModal, setClickedProduct}) {
+import { CartContext } from "../../pages/_app"
+import { useContext } from "react"
+import Success from "../modal/Success"
+
+export default function ProductItem(
+    {
+        product, 
+        setShowModal, 
+        clickedProduct, 
+        setClickedProduct, 
+        buyedProduct, 
+        setBuyedProduct,
+        isSuccess,
+        setIsSuccess
+    }){
+    const context = useContext(CartContext)
+
     return (
         <div className="mx-auto">
             <Image src={product.img} width={300} height={300} alt="" className="w-[300px] h-[300px] object-cover rounded-2xl" />
@@ -13,13 +29,27 @@ export default function ProductItem({product, setShowModal, setClickedProduct}) 
             </h2>
             <div className="flex justify-between">
                 <Button 
-                    content="More" icon={"info"} bgColor={"bg-blue-500"} 
+                    content="More" 
+                    icon={"info"} 
+                    bgColor={"bg-blue-500"} 
                     onClick={() => {
                         setShowModal(true)
                         setClickedProduct(product)
-                    }}/>
-                <Button content="Buy" icon={"addCart"} bgColor={"bg-red-400"} />
+                    }}
+                />
+                <Button 
+                    content="Buy" 
+                    icon={"addCart"} 
+                    bgColor={"bg-red-400"} 
+                    className={`${isSuccess ? "bg-green-300" : ""}`}
+                    onClick={() => {
+                        // context.setIsSuccess(true)
+                        context.cart.push(product)
+                        context.setCart(context.cart)
+                    }}
+                />
             </div>
+            <Success isSuccess={context.isSuccess} setIsSuccess={context.setIsSuccess} />
         </div>
     )
 }

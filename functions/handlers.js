@@ -1,5 +1,7 @@
 module.exports = {
     formattedPrice: (price) => {
-        return price
+        return Intl.NumberFormat('vn-VN', {
+            currency: 'VND',
+        }).format(price);
     }
 }

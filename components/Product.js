@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import ProductModal from "./modal/ProductModal"
 import ProductItem from "./product/ProductItem"
@@ -6,6 +6,7 @@ import ProductItem from "./product/ProductItem"
 export default function Product() {
     const [showModal, setShowModal] = useState(false)
     const [clickedProduct, setClickedProduct] = useState({})
+    const [buyedProduct, setBuyedProduct] = useState({})
 
     // GET DATA FROM MSSQL-------------------------------------------------------------
     // useEffect(() => {
@@ -20,11 +21,18 @@ export default function Product() {
 
     const Products = demoProducts.map((item, index) => {
         return (
-            <ProductItem key={index} product={item} setShowModal={setShowModal} setClickedProduct={setClickedProduct} clickedProduct={clickedProduct}  />
+            <ProductItem 
+                key={index} 
+                product={item} 
+                setClickedProduct={setClickedProduct} clickedProduct={clickedProduct} 
+                setShowModal={setShowModal} 
+                buyedProduct={buyedProduct}
+                setBuyedProduct={setBuyedProduct}
+            />
         )
     })
     return (
-        <div className={`z-[8] box-border`}>  
+        <div className={`z-[8] box-border relative`}>  
             {clickedProduct && <ProductModal product={clickedProduct} showModal={showModal} setShowModal={setShowModal} />}
             <h2 className="font-semibold text-xl mb-14">All products</h2>
             <div className="grid place-content-center gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
