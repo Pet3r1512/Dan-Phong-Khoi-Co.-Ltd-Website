@@ -5,7 +5,6 @@ import { formattedPrice } from "../../functions/handlers"
 
 import { CartContext } from "../../pages/_app"
 import { useContext } from "react"
-import Success from "../modal/Success"
 
 export default function ProductItem(
     {
@@ -16,7 +15,9 @@ export default function ProductItem(
         buyedProduct, 
         setBuyedProduct,
         isSuccess,
-        setIsSuccess
+        setIsSuccess,
+        count,
+        setCount,
     }){
     const context = useContext(CartContext)
 
@@ -43,13 +44,14 @@ export default function ProductItem(
                     bgColor={"bg-red-400"} 
                     className={`${isSuccess ? "bg-green-300" : ""}`}
                     onClick={() => {
-                        // context.setIsSuccess(true)
                         context.cart.push(product)
                         context.setCart(context.cart)
+                        // context.productList.push(product)
+                        // console.log(context.productList)
+                        // context.setProductList(() => {new Set(context.productList)})
                     }}
                 />
             </div>
-            <Success isSuccess={context.isSuccess} setIsSuccess={context.setIsSuccess} />
         </div>
     )
 }

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../pages/_app'
 
 import ProductModal from "./modal/ProductModal"
 import ProductItem from "./product/ProductItem"
@@ -7,6 +8,8 @@ export default function Product() {
     const [showModal, setShowModal] = useState(false)
     const [clickedProduct, setClickedProduct] = useState({})
     const [buyedProduct, setBuyedProduct] = useState({})
+
+    const context = useContext(CartContext)
 
     // GET DATA FROM MSSQL-------------------------------------------------------------
     // useEffect(() => {
@@ -28,6 +31,8 @@ export default function Product() {
                 setShowModal={setShowModal} 
                 buyedProduct={buyedProduct}
                 setBuyedProduct={setBuyedProduct}
+                count={context.count}
+                setCount={context.setCount}
             />
         )
     })
